@@ -32,8 +32,9 @@ class TestCase(unittest.TestCase):
 
     def test_ce_import(self):
         """delete this test once you've started working on your code"""
-        conv_endian(8, 2)
-        self.assertTrue(True)
+        result = conv_endian(8)
+        is_string = type(result) == str
+        self.assertTrue(is_string)
 
 
 if __name__ == '__main__':
