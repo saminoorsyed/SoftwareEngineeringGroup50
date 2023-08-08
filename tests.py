@@ -10,6 +10,7 @@ from task import conv_num, my_datetime, conv_endian
 # here's an example: test_ce_return_string(self):
 # feel free to do it however you like, this is just my suggestion!
 
+
 class TestCase(unittest.TestCase):
 
     def test1(self):
@@ -64,6 +65,7 @@ class TestCase(unittest.TestCase):
     def test_ce_incorrect_endian(self):
         result = conv_endian(num=-954786, endian='small')
         self.assertIsNone(result)
+
 
 if __name__ == '__main__':
     unittest.main()
