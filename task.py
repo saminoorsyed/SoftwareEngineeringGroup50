@@ -26,16 +26,21 @@ def conv_endian(num, endian='big'):
     The endian type is determined by the flag endian.
     The function will return the converted number as a string
     """
+    # return none if second arg is not big or little
+    if endian not in ['little', 'big']:
+        return None
+
     # set is_negative flag
     is_negative = False
-    if num < 0 :
+    if num < 0:
         is_negative = True
         num = abs(num)
 
-    hex_string = ""
+    hex_string = ''
     # array to convert bytes to hexadecimal
-    hex_conv_arr = [ "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"]
-    # convert to hexadecimal notation use bit wise operators
+    hex_conv_arr = ['0', '1', '2', '3', '4', '5', '6',
+                    '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F']
+    # convert to hexidecimal and append to hex_string
     while num > 0:
         # 256 bc 16 * 16 is total info in 1 byte (2 hex numbers)
         byte = num % 256
@@ -45,15 +50,15 @@ def conv_endian(num, endian='big'):
         # append vals to hex string and add a space
         hex_string += most_sig_digit
         hex_string += least_sig_digit
-        hex_string += " "
+        hex_string += ' '
         # find the next most significant byte
         num //= 256
 
-    if endian == 'little':
-        # reverse the order of bytes if little endian
-        hex_string = " ".join(hex_string.split()[::-1])
+    if endian == 'big':
+        # reverse the order of bytes if big endian
+        hex_string = ' '.join(hex_string.split()[::-1])
 
     if is_negative:
-        hex_string = "-"+ hex_string
+        hex_string = '-' + hex_string
 
     return hex_string

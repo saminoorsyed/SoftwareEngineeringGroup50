@@ -1,41 +1,60 @@
 import unittest
-# import functions
-from task import *
-
-# Since we're using the same testcase class let's stick to our own sections.
-#   --I put delimeters below to help ID where your tests should go.
-# remember that our tests all have to start with the word "test" to be run
-# to avoid naming conflicts, I propose using an abbreviation for each of our functions after the word test
-# con_num = cn, my_datetime = md, conv_endian = ce
-# the format I was thinking is the following: test_<abbreviation>_description(self):
-# here's an example: test_ce_return_string(self):
-# feel free to do it however you like, this is just my suggestion!
-
+from task import conv_num, my_datetime, conv_endian
 
 class TestCase(unittest.TestCase):
 
     def test1(self):
         self.assertTrue(True)
 
-    # ********************** con_num ********************************
-    def test_cn_import(self):
-        """delete this test once you've started working on your code"""
-        conv_num(8)
-        self.assertTrue(True)
-    # ********************** my_datetime ********************************
+    # ************************* conv_num *****************************
 
-    def test_md_import(self):
-        """delete this test once you've started working on your code"""
-        my_datetime(8)
-        self.assertTrue(True)
-    # ********************** conv_endian ********************************
+    def test_conv_num_import(self):
+        """Test conv_num import and basic functionality"""
+        result = conv_num(8)
+        self.assertEqual(result, 8)
+
+    # ************************* my_datetime *************************
+
+    def test_my_datetime_import(self):
+        """Test my_datetime import and basic functionality"""
+        result = my_datetime(8)
+        self.assertEqual(result, 8)
+
+    # ************************* conv_endian *************************
 
     def test_ce_returns_string(self):
-        """tests that the function returns a string"""
+        """Test if conv_endian returns a string"""
         result = conv_endian(8)
-        is_string = type(result) == str
-        self.assertTrue(is_string)
-    
-    def test_ce_
+        self.assertIsInstance(result, str)
+
+    def test_ce_positive_big(self):
+        result = conv_endian(954786, endian='big')
+        expected_return = '0E 91 A2'
+        self.assertEqual(result, expected_return)
+
+    def test_ce_positive_default(self):
+        result = conv_endian(954786)
+        expected_return = '0E 91 A2'
+        self.assertEqual(result, expected_return)
+
+    def test_ce_negative_default(self):
+        result = conv_endian(-954786)
+        expected_return = '-0E 91 A2'
+        self.assertEqual(result, expected_return)
+
+    def test_ce_positive_little(self):
+        result = conv_endian(954786, endian='little')
+        expected_return = 'A2 91 0E'
+        self.assertEqual(result, expected_return)
+
+    def test_ce_negative_little(self):
+        result = conv_endian(-954786, endian='little')
+        expected_return = '-A2 91 0E'
+        self.assertEqual(result, expected_return)
+
+    def test_ce_incorrect_endian(self):
+        result = conv_endian(num=-954786, endian='small')
+        self.assertIsNone(result)
+
 if __name__ == '__main__':
     unittest.main()
