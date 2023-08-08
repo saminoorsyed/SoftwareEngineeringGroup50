@@ -61,4 +61,4 @@ def conv_endian(num, endian='big'):
     if is_negative:
         hex_string = '-' + hex_string
 
-    return hex_string
+    return hex_string.
