@@ -30,12 +30,11 @@ class TestCase(unittest.TestCase):
         self.assertTrue(True)
     # ********************** conv_endian ********************************
 
-    def test_ce_import(self):
-        """delete this test once you've started working on your code"""
+    def test_ce_returns_string(self):
+        """tests that the function returns a string"""
         result = conv_endian(8)
         is_string = type(result) == str
         self.assertTrue(is_string)
-
 
 if __name__ == '__main__':
     unittest.main()
