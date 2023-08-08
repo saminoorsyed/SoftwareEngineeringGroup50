@@ -33,6 +33,27 @@ def conv_endian(num, endian='big'):
         num = abs(num)
 
     hex_string = ""
+    # array to convert bytes to hexadecimal
+    hex_conv_arr = [ "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"]
+    # convert to hexadecimal notation use bit wise operators
+    while num > 0:
+        # 256 bc 16 * 16 is total info in 1 byte (2 hex numbers)
+        byte = num % 256
+        # find values of most and least significant hex digits
+        most_sig_digit = hex_conv_arr[byte // 16]
+        least_sig_digit = hex_conv_arr[byte % 16]
+        # append vals to hex string and add a space
+        hex_string += most_sig_digit
+        hex_string += least_sig_digit
+        hex_string += " "
+        # find the next most significant byte
+        num //= 256
 
+    if endian == 'little':
+        # reverse the order of bytes if little endian
+        hex_string = " ".join(hex_string.split()[::-1])
+
+    if is_negative:
+        hex_string = "-"+ hex_string
 
     return hex_string

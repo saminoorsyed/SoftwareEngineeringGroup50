@@ -35,6 +35,7 @@ class TestCase(unittest.TestCase):
         result = conv_endian(8)
         is_string = type(result) == str
         self.assertTrue(is_string)
-
+    
+    def test_ce_
 if __name__ == '__main__':
     unittest.main()
