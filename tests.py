@@ -1,10 +1,9 @@
 import unittest
 # import functions
-import con_num
-import my_datetime
-import conv_endian
+from task import *
 
-# Since we're using the same testcase class let's stick to our own sections, I'll put a delimeter below to help ID where your tests are
+# Since we're using the same testcase class let's stick to our own sections.
+#   --I put delimeters below to help ID where your tests should go.
 # remember that our tests all have to start with the word "test" to be run
 # to avoid naming conflicts, I propose using an abbreviation for each of our functions after the word test
 # con_num = cn, my_datetime = md, conv_endian = ce
@@ -18,8 +17,24 @@ class TestCase(unittest.TestCase):
     def test1(self):
         self.assertTrue(True)
 
-    ######################## con_num #################################
-    ######################## my_datetime #################################
-    ######################## conv_endian #################################
+    # ********************** con_num ********************************
+    def test_cn_import(self):
+        """delete this test once you've started working on your code"""
+        conv_num(8)
+        self.assertTrue(True)
+    # ********************** my_datetime ********************************
+
+    def test_md_import(self):
+        """delete this test once you've started working on your code"""
+        my_datetime(8)
+        self.assertTrue(True)
+    # ********************** conv_endian ********************************
+
+    def test_ce_import(self):
+        """delete this test once you've started working on your code"""
+        conv_endian(8, 2)
+        self.assertTrue(True)
+
+
 if __name__ == '__main__':
     unittest.main()
