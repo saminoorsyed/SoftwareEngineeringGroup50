@@ -18,14 +18,14 @@ class TestCase(unittest.TestCase):
     # ************************* conv_num *****************************
 
     def test_conv_num_import(self):
-        """Test conv_num import and basic functionality"""
+        """delete test once you get started"""
         result = conv_num(8)
         self.assertEqual(result, 8)
 
     # ************************* my_datetime *************************
 
     def test_my_datetime_import(self):
-        """Test my_datetime import and basic functionality"""
+        """delete test once you get started"""
         result = my_datetime(8)
         self.assertEqual(result, 8)
 
