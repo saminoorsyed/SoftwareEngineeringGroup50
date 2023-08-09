@@ -18,10 +18,29 @@ class TestCase(unittest.TestCase):
 
     # ************************* conv_num *****************************
 
-    def test_conv_num_import(self):
-        """delete test once you get started"""
-        result = conv_num(8)
-        self.assertEqual(result, 8)
+    def test_cn_valid_int(self):
+        self.assertEqual(conv_num('12345'), 12345)  # 12345
+    
+    def test_cn_valid_neg_float(self):
+        self.assertEqual(conv_num('-123.45'), -123.45)  # -123.45
+    
+    def test_cn_valid_pos_float(self):
+        self.assertEqual(conv_num('.45'), 0.45)  # 0.45
+    
+    def test_cn_valid_pos_float_2(self):
+        self.assertEqual(conv_num('123.'), 123.)  # 123.
+    
+    def test_cn_valid_hexadecimal(self):
+        self.assertEqual(conv_num('0xAD4'), 2772)  # 2772
+
+    def test_cn_invalid_hexadecimal(self):
+        self.assertIsNone(conv_num('0xAZ4'))  # None
+
+    def test_cn_invalid_int(self):    
+        self.assertIsNone(conv_num('12345A'))  # None
+
+    def test_cn_invalid_float(self):
+        self.assertIsNone(conv_num('12.3.45'))  # None
 
     # ************************* my_datetime *************************
 
