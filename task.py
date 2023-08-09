@@ -15,11 +15,11 @@ def conv_num(num_str):
     Converts an integer, floating-point, or hexadecimal string into a base 10 number and returns the base 10 number
     """
     # checking for invalid input 
-    if num_str = "" or type(num_str) != str: 
+    if num_str == "" or type(num_str) != str: 
         return None
 
     # checking if positive or negative 
-    if num_str[0] == '-']:
+    if num_str[0] == '-':
         negative = True
         num_str = num_str[1:]
     else:
