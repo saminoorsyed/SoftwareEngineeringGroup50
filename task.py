@@ -31,12 +31,33 @@ def conv_num(num_str):
     elif '.' in num_str:
         # floating-point number
     else: 
-        # Integer
+        # integer
 
     if negative: 
         num = -num
     
     return num_str
+
+def convert_hexadecimal(hex_str):
+    """
+    Helper function for conv_num function. 
+    Converts a hexadecimal string to base 10 number. 
+    """
+    return True
+
+def convert_floating_point(floating_str):
+    """
+    Helper function for conv_num function.
+    Converts a floating point string to base 10 number. 
+    """
+    return True
+
+def convert_int(int_string):
+    """
+    Helper function for conv_num function. 
+    Converts an integer string to base 10 number. 
+    """
+    return True
 
 
 def my_datetime(num_sec):
