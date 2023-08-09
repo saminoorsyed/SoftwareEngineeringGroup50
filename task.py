@@ -28,7 +28,7 @@ def conv_num(num_str):
     # checking type of string + converting string to base 10
     if num_str.startswith('0x'):
         # hexadecimal number
-        converted_num = convert_hexadecimal(num_str)
+        converted_num = convert_hexadecimal(num_str[2:])
     elif '.' in num_str:
         # floating-point number
         converted_num = convert_floating_point(num_str)
@@ -62,6 +62,8 @@ def convert_floating_point(float_str):
     """
     if float_str.count('.') != 1:
         return None
+    if float_str[0] == '.':
+        float_str = "0" + float_str 
     integer_part, decimal_part = float_str.split('.')
     
     if not integer_part.isdigit() or not all(digit.isdigit() for digit in decimal_part):
