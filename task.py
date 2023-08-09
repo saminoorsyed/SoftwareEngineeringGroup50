@@ -28,15 +28,18 @@ def conv_num(num_str):
     # checking type of string + converting string to base 10
     if num_str.startswith('0x'):
         # hexadecimal number
+        converted_num = convert_hexadecimal(num_str)
     elif '.' in num_str:
         # floating-point number
+        converted_num = convert_floating_point(num_str)
     else: 
         # integer
+        converted_num = convert_int(num_str)
 
     if negative: 
-        num = -num
+        converted_num = -converted_num
     
-    return num_str
+    return converted_num
 
 def convert_hexadecimal(hex_str):
     """
