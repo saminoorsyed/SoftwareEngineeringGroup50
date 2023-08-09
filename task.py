@@ -24,6 +24,17 @@ def conv_num(num_str):
         num_str = num_str[1:]
     else:
         negative = False
+
+    # checking type of string + converting string to base 10
+    if num_str.startswith('0x'):
+        # hexadecimal number
+    elif '.' in num_str:
+        # floating-point number
+    else: 
+        # Integer
+
+    if negative: 
+        num = -num
     
     return num_str
 
