@@ -11,7 +11,13 @@
 # Just communicate your changes if you make them so we're all on the same page
 
 def conv_num(num_str):
-    """function for James to work on """
+    """
+    Converts an integer, floating-point, or hexadecimal string into a base 10 number and returns the base 10 number
+    """
+    # checking for invalid input 
+    if num_str = "" or type(num_str) != str: 
+        return None
+    
     return num_str
 
 
