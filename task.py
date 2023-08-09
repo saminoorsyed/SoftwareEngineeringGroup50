@@ -55,12 +55,30 @@ def convert_hexadecimal(hex_str):
         num = num * 16 + hex_digits.index(digit)
     return num
 
-def convert_floating_point(floating_str):
+def convert_floating_point(float_str):
     """
     Helper function for conv_num function.
     Converts a floating point string to base 10 number. 
     """
-    return True
+    if float_str.count('.') != 1:
+        return None
+    integer_part, decimal_part = float_str.split('.')
+    
+    if not integer_part.isdigit() or not all(digit.isdigit() for digit in decimal_part):
+        return None
+    
+    num = 0
+    fraction = 0
+    denominator = 1
+    
+    for digit in integer_part:
+        num = num * 10 + ord(digit) - ord('0')
+    
+    for digit in decimal_part:
+        fraction = fraction * 10 + ord(digit) - ord('0')
+        denominator *= 10
+    
+    return num + fraction / denominator
 
 def convert_int(int_string):
     """
