@@ -80,12 +80,18 @@ def convert_floating_point(float_str):
     
     return num + fraction / denominator
 
-def convert_int(int_string):
+def convert_int(int_str):
     """
     Helper function for conv_num function. 
     Converts an integer string to base 10 number. 
     """
-    return True
+    digits = "0123456789"
+    num = 0
+    for digit in int_str:
+        if digit not in digits:
+            return None
+        num = num * 10 + digits.index(digit)
+    return num
 
 
 def my_datetime(num_sec):
