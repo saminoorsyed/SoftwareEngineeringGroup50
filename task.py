@@ -46,7 +46,14 @@ def convert_hexadecimal(hex_str):
     Helper function for conv_num function. 
     Converts a hexadecimal string to base 10 number. 
     """
-    return True
+    hex_digits = "0123456789ABCDEF"
+    hex_str = hex_str.upper()
+    num = 0
+    for digit in hex_str:
+        if digit not in hex_digits:
+            return None
+        num = num * 16 + hex_digits.index(digit)
+    return num
 
 def convert_floating_point(floating_str):
     """
