@@ -19,7 +19,7 @@ def conv_num(num_str):
     into a base 10 number and returns the base 10 number
     """
     # checking for invalid input
-    if num_str == "" or isinstance(num_str, str):
+    if num_str == "" or not isinstance(num_str, str):
         return None
 
     # checking if positive or negative
