@@ -46,10 +46,15 @@ class TestCase(unittest.TestCase):
 
     # ************************* my_datetime *************************
 
-    def test_myd_returns_str(self):
+    def test_md_returns_str(self):
         """Test if my_datetime returns a string"""
         result = my_datetime(8)
         self.assertIsInstance(result, str)
+
+    def test_md_returns_format(self):
+        """Test if my_datetime returns the correct format"""
+        result = my_datetime(8)
+        self.assertIsInstance(result, '01-01-1970')
 
     # ************************* conv_endian *************************
 
