@@ -162,10 +162,11 @@ def helper_month_day(days_total, year):
     # subtract until days less than days in a month
     # update month
     for days in days_in_month:
-        if days_total > days:
+        if days_total >= days:
             days_total -= days
             month += 1
         else:
+            # have to add one to days to account for no 0 day
             return month, days_total + 1
 
 
