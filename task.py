@@ -112,8 +112,6 @@ def my_datetime(num_sec):
     """
 
     current_year = 1970
-    current_month = ''
-    current_day = 0
 
     # convert num_sex to days
     days = num_sec // (60 * 60 * 24)
@@ -128,7 +126,7 @@ def my_datetime(num_sec):
         current_year += 1
 
     current_month, current_day = \
-                    helper_month_day(days, current_year)
+                helper_month_day(days, current_year)
 
     current_day += 1
 
@@ -146,7 +144,7 @@ def is_leap_year(year):
     return (year % 4 == 0 and year % 100 != 0) or (year % 400 == 0)
 
 
-def helper_month_day(days, year):
+def helper_month_day(days_total, year):
     """
     Calculates month and day of month of year from an input of
     total days and current year
@@ -154,80 +152,18 @@ def helper_month_day(days, year):
 
     # month and day if current year is a leap year
     # subtracts days in each month from the total days
-    if is_leap_year(year):
-        if days <= 31:
-            return '01', days
-        elif days <= 60:
-            curr_day = days - 31
-            return '02', curr_day
-        elif days <= 91:
-            curr_day = days - 60
-            return '03', curr_day
-        elif days <= 121:
-            curr_day = days - 91
-            return '04', curr_day
-        elif days <= 152:
-            curr_day = days - 121
-            return '05', curr_day
-        elif days <= 182:
-            curr_day = days - 152
-            return '06', curr_day
-        elif days <= 213:
-            curr_day = days - 182
-            return '07', curr_day
-        elif days <= 244:
-            curr_day = days - 213
-            return '08', curr_day
-        elif days <= 274:
-            curr_day = days - 244
-            return '09', curr_day
-        elif days <= 305:
-            curr_day = days - 274
-            return '10', curr_day
-        elif days <= 335:
-            curr_day = days - 305
-            return '11', curr_day
-        else:
-            curr_day = days - 335
-            return '12', curr_day
-    else:
+    days_in_month = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+    month = 1
 
-        # if current day is not a leap year
-        if days <= 31:
-            return '01', days
-        elif days <= 59:
-            curr_day = days - 31
-            return '02', curr_day
-        elif days <= 90:
-            curr_day = days - 59
-            return '03', curr_day
-        elif days <= 120:
-            curr_day = days - 90
-            return '04', curr_day
-        elif days <= 151:
-            curr_day = days - 120
-            return '05', curr_day
-        elif days <= 181:
-            curr_day = days - 151
-            return '06', curr_day
-        elif days <= 212:
-            curr_day = days - 181
-            return '07', curr_day
-        elif days <= 243:
-            curr_day = days - 212
-            return '08', curr_day
-        elif days <= 273:
-            curr_day = days - 243
-            return '09', curr_day
-        elif days <= 304:
-            curr_day = days - 273
-            return '10', curr_day
-        elif days <= 334:
-            curr_day = days - 304
-            return '11', curr_day
+    if is_leap_year(year):
+        days_in_month[1] = 29
+
+    for days in days_in_month:
+        if days_total > days:
+            days_total -= days
+            month += 1
         else:
-            curr_day = days - 334
-            return '12', curr_day
+            return month, days_total + 1
 
 
 def conv_endian(num, endian='big'):
