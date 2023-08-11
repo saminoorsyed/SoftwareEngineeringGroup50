@@ -79,7 +79,7 @@ class TestCase(unittest.TestCase):
     def test_md_many(self):
         """Test if my_datetime returns correct date after many leapyears.
         This will have one year divisible by 400 and one divisible by 100"""
-        result = my_datetime(31 * 364 * 24 * 60 * 60)
+        result = my_datetime(31 * 364 * 24 * 60 * 60)  # 11-23-2000
         expected = datetime.utcfromtimestamp(31 * 364 * 24 * 60 * 60)\
             .strftime('%m-%d-%Y')
         self.assertEqual(result, expected)
@@ -89,6 +89,13 @@ class TestCase(unittest.TestCase):
         This will have one years divisble by 400 and many divisible by 100"""
         result = my_datetime(9876543210)
         expected = '12-22-2282'
+        self.assertEqual(result, expected)
+
+    def test_md_many_400(self):
+        """Test if my_datetime returns correct date after many leapyears
+        This will have many years divisble by 400 and many divisible by 100"""
+        result = my_datetime(201653971200)
+        expected = '02-29-8360'
         self.assertEqual(result, expected)
 
     # ************************* conv_endian *************************
