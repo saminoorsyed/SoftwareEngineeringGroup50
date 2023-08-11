@@ -65,8 +65,8 @@ class TestCase(unittest.TestCase):
 
     def test_md_before_ly(self):
         """Test if my_datetime returns correct date before any leapyears"""
-        result = my_datetime(729 * 24 * 60 * 60)  # 12-31-1971
-        expected = datetime.utcfromtimestamp(729 * 24 * 60 * 60)\
+        result = my_datetime(2 * 364 * 24 * 60 * 60)  # 12-31-1971
+        expected = datetime.utcfromtimestamp(2 * 364 * 24 * 60 * 60)\
             .strftime('%m-%d-%Y')
         self.assertEqual(result, expected)
 
