@@ -1,5 +1,6 @@
 import unittest
 from task import conv_num, my_datetime, conv_endian
+from datetime import datetime
 
 # Since we're using the same testcase class let's stick to our own sections.
 #   --I put delimeters below to help ID where your tests should go.
@@ -54,6 +55,11 @@ class TestCase(unittest.TestCase):
     def test_md_returns_format(self):
         """Test if my_datetime returns the correct format"""
         result = my_datetime(8)
+        self.assertIsInstance(result, '01-01-1970')
+
+    def test_md_zero(self):
+        """Test if my_datetime sets zero to January 1st, 1970"""
+        result = my_datetime(0)
         self.assertIsInstance(result, '01-01-1970')
 
     # ************************* conv_endian *************************
