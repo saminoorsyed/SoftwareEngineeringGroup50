@@ -121,12 +121,19 @@ def my_datetime(num_sec):
     # subtract from days depending of if year is leap year
     # keep updating to next year
     while days >= 365:
-        if current_year % 4 == 0:
+        if is_leap_year(current_year):
             days -= 366
         else:
             days -= 365
         current_year += 1
     return num_sec
+
+
+def is_leap_year(year):
+    """
+    Determine whether year is a leap year or not
+    """
+    return (year % 4 == 0 and year % 100 != 0) or (year % 400 == 0)
 
 
 def conv_endian(num, endian='big'):
