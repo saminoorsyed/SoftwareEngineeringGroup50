@@ -46,10 +46,10 @@ class TestCase(unittest.TestCase):
 
     # ************************* my_datetime *************************
 
-    def test_my_datetime_import(self):
-        """delete test once you get started"""
+    def test_myd_returns_str(self):
+        """Test if my_datetime returns a string"""
         result = my_datetime(8)
-        self.assertEqual(result, 8)
+        self.assertIsInstance(result, str)
 
     # ************************* conv_endian *************************
 
