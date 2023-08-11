@@ -60,7 +60,8 @@ class TestCase(unittest.TestCase):
     def test_md_zero(self):
         """Test if my_datetime sets zero to January 1st, 1970"""
         result = my_datetime(0)
-        self.assertIsInstance(result, '01-01-1970')
+        expected = '01-01-1970'
+        self.assertIsInstance(result, expected)
 
     def test_md_before_ly(self):
         """Test if my_datetime returns correct date before any leapyears"""
