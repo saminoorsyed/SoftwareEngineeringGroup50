@@ -77,8 +77,8 @@ class TestCase(unittest.TestCase):
         self.assertEqual(result, expected)
 
     def test_md_many(self):
-        """Test if my_datetime return correct date after many leapyears.
-        This will have one year divisible by 400 and many divisible by 100"""
+        """Test if my_datetime returns correct date after many leapyears.
+        This will have one year divisible by 400 and one divisible by 100"""
         result = my_datetime(31 * 364 * 24 * 60 * 60)
         expected = datetime.utcfromtimestamp(31 * 364 * 24 * 60 * 60)\
             .strftime('%m-%d-%Y')
