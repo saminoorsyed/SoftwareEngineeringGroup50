@@ -104,8 +104,70 @@ def convert_int(int_str):
 
 
 def my_datetime(num_sec):
-    """function for Varun to work on """
-    return num_sec
+    """
+    This function takes in an integer value and coverts it to a date
+    Integer num_sec is an input in seconds
+    Date is returned in the format 'MM-DD-YYYY' with
+    0 representing '01-01-1970'
+    """
+
+    current_year = 1970
+
+    # convert num_sex to days
+    days = num_sec // (60 * 60 * 24)
+
+    # subtract from days depending of if year is leap year
+    # keep updating to next year
+    while days >= 365:
+        if is_leap_year(current_year):
+            days -= 366
+        else:
+            days -= 365
+        current_year += 1
+
+    # convert total days to month and days left
+    current_month, current_day = \
+        helper_month_day(days, current_year)
+
+    # add 0 in front of values less than 10
+    if current_month < 10:
+        current_month = '0' + str(current_month)
+    if current_day < 10:
+        current_day = '0' + str(current_day)
+
+    return str(current_month) + '-' + str(current_day) +\
+        '-' + str(current_year)
+
+
+def is_leap_year(year):
+    """
+    Determine whether year is a leap year or not
+    """
+    return (year % 4 == 0 and year % 100 != 0) or (year % 400 == 0)
+
+
+def helper_month_day(days_total, year):
+    """
+    Calculates month and day of month of year from an input of
+    total days and current year
+    """
+
+    days_in_month = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+    month = 1
+
+    # adjust list for leap year
+    if is_leap_year(year):
+        days_in_month[1] = 29
+
+    # subtract until days less than days in a month
+    # update month
+    for days in days_in_month:
+        if days_total >= days:
+            days_total -= days
+            month += 1
+        else:
+            # have to add one to days to account for no 0 day
+            return month, days_total + 1
 
 
 def conv_endian(num, endian='big'):

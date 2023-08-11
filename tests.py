@@ -1,5 +1,6 @@
 import unittest
 from task import conv_num, my_datetime, conv_endian
+from datetime import datetime
 
 # Since we're using the same testcase class let's stick to our own sections.
 #   --I put delimeters below to help ID where your tests should go.
@@ -46,10 +47,63 @@ class TestCase(unittest.TestCase):
 
     # ************************* my_datetime *************************
 
-    def test_my_datetime_import(self):
-        """delete test once you get started"""
+    def test_md_returns_str(self):
+        """Test if my_datetime returns a string"""
         result = my_datetime(8)
-        self.assertEqual(result, 8)
+        self.assertIsInstance(result, str)
+
+    def test_md_returns_format(self):
+        """Test if my_datetime returns the correct format"""
+        result = my_datetime(8)
+        self.assertEqual(result, '01-01-1970')
+
+    def test_md_zero(self):
+        """Test if my_datetime sets zero to January 1st, 1970"""
+        result = my_datetime(0)
+        expected = '01-01-1970'
+        self.assertEqual(result, expected)
+
+    def test_md_before_ly(self):
+        """Test if my_datetime returns correct date before any leapyears"""
+        result = my_datetime(2 * 364 * 24 * 60 * 60)  # 12-31-1971
+        expected = datetime.utcfromtimestamp(2 * 364 * 24 * 60 * 60)\
+            .strftime('%m-%d-%Y')
+        self.assertEqual(result, expected)
+
+    def test_md_one(self):
+        """Test if my_datetime returns correct date after one leapyear"""
+        result = my_datetime(123456789)
+        expected = '11-29-1973'
+        self.assertEqual(result, expected)
+
+    def test_md_many(self):
+        """Test if my_datetime returns correct date after many leapyears.
+        This will have one year divisible by 400 and one divisible by 100"""
+        result = my_datetime(31 * 364 * 24 * 60 * 60)  # 11-23-2000
+        expected = datetime.utcfromtimestamp(31 * 364 * 24 * 60 * 60)\
+            .strftime('%m-%d-%Y')
+        self.assertEqual(result, expected)
+
+    def test_md_many_100(self):
+        """Test if my_datetime returns correct date after many leapyears
+        and current year is not a leap year"""
+        result = my_datetime(9876543210)
+        expected = '12-22-2282'
+        self.assertEqual(result, expected)
+
+    def test_md_many_400(self):
+        """Test if my_datetime returns correct date after many leapyears
+        and current year is a leap year"""
+        result = my_datetime(201653971200)
+        expected = '02-29-8360'
+        self.assertEqual(result, expected)
+
+    def test_md_max(self):
+        """Test if my_datetime returns returns for year 9999"""
+        result = my_datetime(2932775 * 24 * 60 * 60)  # 09-01-9999
+        expected = datetime.utcfromtimestamp(2932775 * 24 * 60 * 60)\
+            .strftime('%m-%d-%Y')
+        self.assertEqual(result, expected)
 
     # ************************* conv_endian *************************
 
