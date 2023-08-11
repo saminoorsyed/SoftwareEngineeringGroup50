@@ -104,7 +104,28 @@ def convert_int(int_str):
 
 
 def my_datetime(num_sec):
-    """function for Varun to work on """
+    """
+    This function takes in an integer value and coverts it to a date
+    Integer num_sec is an input in seconds
+    Date is returned in the format 'MM-DD-YYYY' with
+    0 representing '01-01-1970'
+    """
+
+    current_year = 1970
+    current_month = ''
+    current_day = 0
+
+    # convert num_sex to days
+    days = num_sec // (60 * 60 * 24)
+
+    # subtract from days depending of if year is leap year
+    # keep updating to next year
+    while days >= 365:
+        if current_year % 4 == 0:
+            days -= 366
+        else:
+            days -= 365
+        current_year += 1
     return num_sec
 
 
