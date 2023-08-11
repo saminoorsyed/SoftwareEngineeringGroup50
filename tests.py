@@ -4,9 +4,11 @@ from task import conv_num, my_datetime, conv_endian
 # Since we're using the same testcase class let's stick to our own sections.
 #   --I put delimeters below to help ID where your tests should go.
 # remember that our tests all have to start with the word "test" to be run
-# to avoid naming conflicts, I propose using an abbreviation for each of our functions after the word test
+# to avoid naming conflicts, I propose using an abbreviation for each of our
+# functions after the word test:
 # con_num = cn, my_datetime = md, conv_endian = ce
-# the format I was thinking is the following: test_<abbreviation>_description(self):
+# the format I was thinking is the following:
+# test_<abbreviation>_description(self):
 # here's an example: test_ce_return_string(self):
 # feel free to do it however you like, this is just my suggestion!
 
@@ -18,10 +20,29 @@ class TestCase(unittest.TestCase):
 
     # ************************* conv_num *****************************
 
-    def test_conv_num_import(self):
-        """delete test once you get started"""
-        result = conv_num(8)
-        self.assertEqual(result, 8)
+    def test_cn_valid_int(self):
+        self.assertEqual(conv_num('12345'), 12345)  # 12345
+
+    def test_cn_valid_neg_float(self):
+        self.assertEqual(conv_num('-123.45'), -123.45)  # -123.45
+
+    def test_cn_valid_pos_float(self):
+        self.assertEqual(conv_num('.45'), 0.45)  # 0.45
+
+    def test_cn_valid_pos_float_2(self):
+        self.assertEqual(conv_num('123.'), 123.)  # 123.
+
+    def test_cn_valid_hexadecimal(self):
+        self.assertEqual(conv_num('0xAD4'), 2772)  # 2772
+
+    def test_cn_invalid_hexadecimal(self):
+        self.assertIsNone(conv_num('0xAZ4'))  # None
+
+    def test_cn_invalid_int(self):
+        self.assertIsNone(conv_num('12345A'))  # None
+
+    def test_cn_invalid_float(self):
+        self.assertIsNone(conv_num('12.3.45'))  # None
 
     # ************************* my_datetime *************************
 
