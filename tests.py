@@ -101,7 +101,7 @@ class TestCase(unittest.TestCase):
     def test_md_max(self):
         """Test if my_datetime returns returns for year 9999"""
         result = my_datetime(2932775 * 24 * 60 * 60)  # 09-01-9999
-         expected = datetime.utcfromtimestamp(2932775 * 24 * 60 * 60)\
+        expected = datetime.utcfromtimestamp(2932775 * 24 * 60 * 60)\
             .strftime('%m-%d-%Y')
         self.assertEqual(result, expected)
 
