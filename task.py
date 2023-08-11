@@ -125,9 +125,11 @@ def my_datetime(num_sec):
             days -= 365
         current_year += 1
 
+    # convert total days to month and days left
     current_month, current_day = \
         helper_month_day(days, current_year)
 
+    # add 0 in front of values less than 10
     if current_month < 10:
         current_month = '0' + str(current_month)
     if current_day < 10:
@@ -150,14 +152,15 @@ def helper_month_day(days_total, year):
     total days and current year
     """
 
-    # month and day if current year is a leap year
-    # subtracts days in each month from the total days
     days_in_month = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
     month = 1
 
+    # adjust list for leap year
     if is_leap_year(year):
         days_in_month[1] = 29
 
+    # subtract until days less than days in a month
+    # update month
     for days in days_in_month:
         if days_total > days:
             days_total -= days
