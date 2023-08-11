@@ -126,15 +126,15 @@ def my_datetime(num_sec):
         current_year += 1
 
     current_month, current_day = \
-                helper_month_day(days, current_year)
+        helper_month_day(days, current_year)
 
-    current_day += 1
-
-    day_string = str(current_day)
+    if current_month < 10:
+        current_month = '0' + str(current_month)
     if current_day < 10:
-        day_string = '0' + day_string
+        current_day = '0' + str(current_day)
 
-    return current_month + '-' + day_string + '-' + str(current_year)
+    return str(current_month) + '-' + str(current_day) +\
+        '-' + str(current_year)
 
 
 def is_leap_year(year):
