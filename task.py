@@ -126,7 +126,17 @@ def my_datetime(num_sec):
         else:
             days -= 365
         current_year += 1
-    return num_sec
+
+    current_month, current_day = \
+                    helper_month_day(days, current_year)
+
+    current_day += 1
+
+    day_string = str(current_day)
+    if current_day < 10:
+        day_string = '0' + day_string
+
+    return current_month + '-' + day_string + '-' + str(current_year)
 
 
 def is_leap_year(year):
