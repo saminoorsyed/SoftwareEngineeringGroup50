@@ -31,11 +31,11 @@ def conv_num(num_str):
         return None
 
     # checking if positive or negative
+    negative = False
+
     if num_str[0] == '-':
         negative = True
         num_str = num_str[1:]
-    else:
-        negative = False
 
     # checking type of string + converting string to base 10
     if num_str.startswith('0x'):
