@@ -11,7 +11,11 @@ Functions:
   converts a floating point string to base 10.
 - convert_int(int_str): Helper function for conv_num,
   converts an integer string to base 10.
-- my_datetime(num_sec): (to add after pulling teammate's branch)
+- my_datetime(num_sec): Converts an integer value representing seconds
+  into a date in the format 'MM-DD-YYYY', with 0 representing '01-01-1970'.
+- is_leap_year(year): Determines whether a given year is a leap year.
+- helper_month_day(days_total, year): Calculates month and day of the month
+  of a given year based on total days.
 - conv_endian(num, endian='big'): Converts an integer to its hexadecimal
   representation with specified endianness.
 """
