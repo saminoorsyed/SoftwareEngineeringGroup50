@@ -1,17 +1,25 @@
-# Below are the three functions that we'll be working on
-# To get credit for our work, the functions all have to exist in the same file.
-# Because of the way this assignment is set up, each pull request has to get
-# approved by another group member.
-# Rough Steps to getting approval:
-# 1. create and checkout a branch of your own to work on
-# 2. commit and push code to your own branch
-# 3. when ready to merge to main,
-#    run testing suit before submitting a pull request to merge
-# 4. Send out a message on discord to ask a group member to
-#    approve to approve your pull request.
+"""
+The functions below complete the requirements
+for CS-362's "Group Project: Part 2" assignment.
 
-# I'm just making this up as I go, so feel free to adjust the step above.
-# Just communicate your changes if you make them so we're all on the same page
+Functions:
+- conv_num(num_str): Converts a string representation of an
+  integer, floating-point, or hexadecimal number to base 10.
+- convert_hexadecimal(hex_str): Helper function for conv_num,
+  converts a hexadecimal string to base 10.
+- convert_floating_point(float_str): Helper function for conv_num,
+  converts a floating point string to base 10.
+- convert_int(int_str): Helper function for conv_num,
+  converts an integer string to base 10.
+- my_datetime(num_sec): Converts an integer value representing seconds
+  into a date in the format 'MM-DD-YYYY', with 0 representing '01-01-1970'.
+- is_leap_year(year): Determines whether a given year is a leap year.
+- helper_month_day(days_total, year): Calculates month and day of the month
+  of a given year based on total days.
+- conv_endian(num, endian='big'): Converts an integer to its hexadecimal
+  representation with specified endianness.
+"""
+
 
 def conv_num(num_str):
     """
@@ -23,11 +31,11 @@ def conv_num(num_str):
         return None
 
     # checking if positive or negative
+    negative = False
+
     if num_str[0] == '-':
         negative = True
         num_str = num_str[1:]
-    else:
-        negative = False
 
     # checking type of string + converting string to base 10
     if num_str.startswith('0x'):
@@ -72,7 +80,8 @@ def convert_floating_point(float_str):
         float_str = "0" + float_str
     integer_part, decimal_part = float_str.split('.')
 
-    if not integer_part.isdigit() or not all(digit.isdigit() for digit in decimal_part):
+    if not integer_part.isdigit() \
+            or not all(digit.isdigit() for digit in decimal_part):
         return None
 
     num = 0
@@ -172,7 +181,8 @@ def helper_month_day(days_total, year):
 
 def conv_endian(num, endian='big'):
     """
-    This function takes in an integer value as num and converts it to a hexadecimal number.
+    This function takes in an integer value as num
+    and converts it to a hexadecimal number.
     The endian type is determined by the flag endian.
     The function will return the converted number as a string
     """
